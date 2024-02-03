@@ -1,0 +1,45 @@
+.nav_wrapper{
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+}
+
+.NavBar{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  background-color: #e5e5e5;
+  color: rgb(10, 10, 10);
+  max-width: 1300px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  
+
+  &_left{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    &_logo{
+      height: 40px;
+      width: 40px;
+    }
+    &_header{
+      font-size: 20px;
+    }
+    
+  }
+  &_right{
+    
+    &_header{
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+
+}
