@@ -2,15 +2,22 @@ import React from "react";
 import "./LogIn.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { LoginSocialGoogle, LoginSocialGithub } from "reactjs-social-login";
 
-const LogIn = () => {
+// CUSTOMIZE ANY UI BUTTON
+import {
+  GoogleLoginButton,
+  GithubLoginButton,
+} from "react-social-login-buttons";
+
+const LogIn = ({ setAuth }) => {
   return (
     <>
       <div className="authCard_login">
         <h1>Log In</h1>
+
         <div className="authCard_login_inputs">
           <TextField
-            id="outlined-password-input"
             label="Email"
             type="email"
             autoComplete="current-password"
@@ -18,7 +25,6 @@ const LogIn = () => {
             size="small"
           />
           <TextField
-            id="outlined-password-input"
             label="Password"
             type="password"
             autoComplete="current-password"
@@ -34,9 +40,18 @@ const LogIn = () => {
           </Button>
         </div>
         <p>
-          New User? <span>Register Here</span>
+          New User? <span onClick={() => setAuth(true)}>Register Here</span>
         </p>
         <div className="line"></div>
+        <h5>OR</h5>
+        <div className="authCard_login_social">
+          <LoginSocialGoogle>
+            <GoogleLoginButton size="30px" iconSize="20px" />
+          </LoginSocialGoogle>
+          <LoginSocialGithub>
+            <GithubLoginButton size="30px" iconSize="20px" />
+          </LoginSocialGithub>
+        </div>
       </div>
     </>
   );

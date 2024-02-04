@@ -1,7 +1,7 @@
 .nav_wrapper{
   display: flex;
   justify-content: center;
-  z-index: 5;
+min-width: 300px;
 }
 
 .NavBar{
@@ -17,7 +17,7 @@
   padding-left: 2rem;
   padding-right: 2rem;
   width: 100%;
-  
+  z-index: 100;
 
   &_left{
     display: flex;

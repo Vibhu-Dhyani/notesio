@@ -1,0 +1,40 @@
+.authCard_signup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  gap : 1.2rem;
+
+  h1{
+    font-size: 30px;
+  }
+
+  &_inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 20rem;
+    padding: 0.5rem;
+    
+    &_text {
+      background-color: rgb(235, 235, 235);
+      
+    }
+    &_button{
+      color:rgb(112 112 112);
+    }
+  }
+  p{
+    font-size: small;
+    color: rgb(111, 111, 111);
+    span{
+      text-decoration: underline;
+      cursor: pointer ;
+      &:hover{
+        color: black;
+      }
+    }
+  }
+ 
+}
