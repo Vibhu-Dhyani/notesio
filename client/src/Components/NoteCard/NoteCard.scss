@@ -1,0 +1,68 @@
+.notecard{
+  &:nth-child(odd){
+    background: #ff6b6b;
+  }
+  &:nth-child(even){
+    background: #66affc;
+  }
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 400px;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  &_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &_left{
+    display: flex;
+    flex-direction: column;
+
+    h3{
+      font-size: 15px;
+    }
+    p{
+      font-size: 12px;
+      color: gray;
+    }
+  }
+  &_right{
+    display: flex;
+    flex-direction: row;
+    gap:0.5rem;
+    img{
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+      &:hover{
+        transform: scale(1.05);
+        opacity: 80%;
+      }
+    }
+  }
+}
+&_crumbs{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  li{
+    background-color: rgb(201, 201, 201);
+    color: rgb(35, 35, 35);
+    padding: 0.2rem;
+    border-radius: 5px;
+    font-size: 10px;
+    span{
+      cursor: pointer;
+    }
+  }
+}
+
+  
+
+}
