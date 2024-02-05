@@ -12,7 +12,7 @@ const NoteCard = () => {
           <p>20/10/2022 4:35 pm</p>
         </div>
         <div className="notecard_header_right">
-          <img src={Editpng} alt="" />
+          {/*<img src={Editpng} alt="" />*/}
           <img src={Binpng} alt="" />
         </div>
       </div>

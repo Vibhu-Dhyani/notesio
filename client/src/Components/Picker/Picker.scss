@@ -1,0 +1,43 @@
+.picker {
+  background-color: white;
+  padding: 0.5rem;
+  font-size: 10px;
+  border-radius: 5px;
+  &_list {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    list-style-type: none;
+    overflow-y: scroll;
+    max-height: 50px;
+    &_item {
+      padding: 0.4rem;
+      background-color: rgb(114, 185, 220);
+      color: white;
+      border-radius: 8px;
+      transition: all ease-in-out 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      &:hover {
+        opacity: 70%;
+      }
+      span {
+        cursor: pointer;
+        font-size: 12px;
+        &:hover {
+          color: black;
+        }
+      }
+    }
+    &_input {
+      outline: 0px;
+      border: 0px;
+    }
+  }
+}

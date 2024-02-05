@@ -2,13 +2,38 @@
   display: flex;
   justify-content: flex-start;
   
-  margin-top: 100px;
+  margin-top: 50px;
   gap: 1rem;
   max-width: 1300px;
   
 
   flex-wrap: wrap;
   padding: 2rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  
+  &_newnote{
+    display: flex;
+    padding: 1.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    width: 400px;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    transition: all ease-in-out 0.2s;
+    &:hover{
+      opacity: 80%;
+      background-color: rgba(222, 222, 222, 0.679);
+      cursor: pointer;
+      transform: scale(1.03);
+    }
+    img{
+      height: 100px;
+      width: 100px;
+    }
+  }
 }
 .wrapper_main{
   display: flex;

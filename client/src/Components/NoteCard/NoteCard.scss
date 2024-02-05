@@ -1,9 +1,17 @@
 .notecard{
   &:nth-child(odd){
     background: #ff6b6b;
+
   }
   &:nth-child(even){
     background: #66affc;
+    
+  }
+  &:hover{
+    opacity: 80%;
+    background-color: rgba(122, 122, 122, 0.679);
+    cursor: pointer;
+    transform: scale(1.03);
   }
   display: flex;
   padding: 1.5rem;
@@ -12,6 +20,7 @@
   max-width: 400px;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  transition: all ease-in-out 0.2s;
   &_header{
     display: flex;
     flex-direction: row;
@@ -23,10 +32,11 @@
 
     h3{
       font-size: 15px;
+      color:rgb(248, 243, 243) ;
     }
     p{
       font-size: 12px;
-      color: gray;
+      color: rgb(248, 243, 243);
     }
   }
   &_right{
@@ -52,7 +62,7 @@
   margin-top: -0.5rem;
   margin-bottom: 0.5rem;
   li{
-    background-color: rgb(201, 201, 201);
+    background-color: rgb(255, 255, 255);
     color: rgb(35, 35, 35);
     padding: 0.2rem;
     border-radius: 5px;
@@ -61,6 +71,9 @@
       cursor: pointer;
     }
   }
+}
+&_body{
+  color: white;
 }
 
   
