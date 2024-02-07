@@ -4,17 +4,53 @@ import { Button, TextField } from "@mui/material";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import Sharepng from "../../assets/images/share.png";
 import Picker from "../Picker/Picker";
+import axios from "axios";
 
-const NewNote = () => {
-  const tags = ["Fashion", "Sports", "Football"];
+const NewNote = ({ data, setData }) => {
   const colors = ["#ef233c", "#2a9d8f", "#f4a261", "#e76f51", "#3d405b"];
 
-  const [bgColor, setBgColor] = useState("#3d405b");
+  const [bg_Color, setbg_Color] = useState("#3d405b");
+  const [newTag, setNewTag] = useState([]);
+  const [formData, setFormData] = useState({
+    title: "",
+    noteBody: "",
+    tags: [],
+    createdBy: "",
+    color: "",
+  });
+  let { title, noteBody, tags, color, createdBy } = formData;
+
+  //handle input feilds change
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  //create note
+  const newNoteCreation = async (e) => {
+    e.preventDefault();
+    tags = newTag;
+    color = bg_Color;
+    createdBy = "65c111a227795abfdc62a026";
+    try {
+      const k = await axios.post("http://localhost:5001/api/notes/createnote", {
+        title,
+        noteBody,
+        tags,
+        bgColor: bg_Color,
+        createdBy,
+      });
+
+      setData([...data, k]);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="newnote_wrapper_main">
       <div className="newnote_wrapper">
-        <div className="newnote_wrapper_note" style={{ background: bgColor }}>
+        <div className="newnote_wrapper_note" style={{ background: bg_Color }}>
           <div className="newnote_wrapper_note_header">
             <div className="newnote_wrapper_note_header_title">
               <TextField
@@ -22,11 +58,14 @@ const NewNote = () => {
                 type="text"
                 className="newnote_wrapper_note_header_inputs_text"
                 size="small"
+                name="title"
+                value={title}
+                onChange={changeHandler}
               />
               <img src={Sharepng} alt="" />
             </div>
           </div>
-          <Picker tags={tags} />
+          <Picker newTag={newTag} setNewTag={setNewTag} />
           <TextField
             id="outlined-multiline-static"
             label="Start Typing Here ..."
@@ -34,6 +73,9 @@ const NewNote = () => {
             rows={15}
             defaultValue=""
             className="newnote_wrapper_note_header_inputs_text"
+            name="noteBody"
+            value={noteBody}
+            onChange={changeHandler}
           />
           <div className="newnote_wrapper_note_footer">
             <Button
@@ -42,6 +84,7 @@ const NewNote = () => {
               color="primary"
               className="newnote_wrapper_note_footer_button"
               startIcon={<NoteAddIcon />}
+              onClick={newNoteCreation}
             >
               Add Note
             </Button>
@@ -51,7 +94,7 @@ const NewNote = () => {
                   <li
                     id={"circle" + idx}
                     onClick={() => {
-                      setBgColor(color);
+                      setbg_Color(color);
                     }}
                   ></li>
                 ))}

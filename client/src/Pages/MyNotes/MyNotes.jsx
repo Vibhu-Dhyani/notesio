@@ -1,24 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NoteCard from "../../Components/NoteCard/NoteCard";
 import Pluspng from "../../assets/images/plus.png";
 import Modal from "@mui/material/Modal";
 import "./MyNotes.scss";
 import NewNote from "../../Components/NewNote/NewNote";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import axios from "axios";
 
 const MyNotes = () => {
+  const [data, setData] = useState();
+  const id = "65c111a227795abfdc62a026";
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let dataReceived = await axios.get(
+          "http://localhost:5001/api/notes/" + id
+        );
+
+        setData(dataReceived.data.allNotes);
+        //console.log(dataReceived.data.allNotes);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     console.log(open);
@@ -32,18 +41,24 @@ const MyNotes = () => {
           <img src={Pluspng} alt="" />
         </div>
         <Modal open={open} onClose={handleClose}>
-          <NewNote />
+          <NewNote data={data} setData={setData} />
         </Modal>
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
+        {data ? (
+          data.map((note, index) => {
+            return (
+              <NoteCard
+                title={note.title}
+                noteBody={note.noteBody}
+                createdAt={note.createdAt}
+                tags={note.tags}
+                color={note.bgColor}
+                createdBy={note.createdBy}
+              />
+            );
+          })
+        ) : (
+          <p>loading</p>
+        )}
       </div>
     </div>
   );

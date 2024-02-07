@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Picker.scss";
-const Picker = ({ tags }) => {
-  const [newTag, setNewTag] = useState(tags);
+const Picker = ({ newTag, setNewTag }) => {
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       // Update the array with the new value

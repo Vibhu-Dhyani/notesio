@@ -42,7 +42,7 @@ const LogIn = ({ setAuth }) => {
         <p>
           New User? <span onClick={() => setAuth(true)}>Register Here</span>
         </p>
-        <div className="line"></div>
+        {/* <div className="line"></div>
         <h5>OR</h5>
         <div className="authCard_login_social">
           <LoginSocialGoogle>
@@ -51,7 +51,7 @@ const LogIn = ({ setAuth }) => {
           <LoginSocialGithub>
             <GithubLoginButton size="30px" iconSize="20px" />
           </LoginSocialGithub>
-        </div>
+        </div>*/}
       </div>
     </>
   );
