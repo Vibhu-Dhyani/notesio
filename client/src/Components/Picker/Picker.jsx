@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Picker.scss";
-const Picker = ({ newTag, setNewTag }) => {
+const Picker = ({ newTag, setNewTag, shareOrTag }) => {
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       // Update the array with the new value
@@ -33,10 +33,12 @@ const Picker = ({ newTag, setNewTag }) => {
             </span>
           </li>
         ))}
+
         <input
           className="picker_list_input"
           type="text"
           onKeyDown={handleEnter}
+          placeholder={shareOrTag}
         />
       </ul>
     </div>

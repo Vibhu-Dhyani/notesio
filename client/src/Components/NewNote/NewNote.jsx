@@ -6,11 +6,12 @@ import Sharepng from "../../assets/images/share.png";
 import Picker from "../Picker/Picker";
 import axios from "axios";
 
-const NewNote = ({ data, setData }) => {
+const NewNote = ({ fetchData, handleClose, data_edit }) => {
   const colors = ["#ef233c", "#2a9d8f", "#f4a261", "#e76f51", "#3d405b"];
-
+  const [shareTog, setShareTog] = useState(false);
   const [bg_Color, setbg_Color] = useState("#3d405b");
   const [newTag, setNewTag] = useState([]);
+  const [share, setShare] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     noteBody: "",
@@ -40,13 +41,15 @@ const NewNote = ({ data, setData }) => {
         createdBy,
       });
 
-      setData([...data, k]);
-      console.log(data);
+      await fetchData();
+      handleClose();
     } catch (error) {
       console.log(error);
     }
   };
-
+  const editNote = async (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="newnote_wrapper_main">
       <div className="newnote_wrapper">
@@ -62,10 +65,26 @@ const NewNote = ({ data, setData }) => {
                 value={title}
                 onChange={changeHandler}
               />
-              <img src={Sharepng} alt="" />
+              <img
+                src={Sharepng}
+                alt=""
+                onClick={() => setShareTog(!shareTog)}
+              />
             </div>
           </div>
-          <Picker newTag={newTag} setNewTag={setNewTag} />
+
+          <Picker
+            newTag={newTag}
+            setNewTag={setNewTag}
+            shareOrTag="Enter Tags"
+          />
+          {shareTog && (
+            <Picker
+              newTag={share}
+              setNewTag={setShare}
+              shareOrTag="Share With"
+            />
+          )}
           <TextField
             id="outlined-multiline-static"
             label="Start Typing Here ..."

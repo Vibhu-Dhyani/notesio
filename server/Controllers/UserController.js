@@ -26,6 +26,7 @@ const SignUp = async (req, res, next) => {
       fullName: fName,
       email: email,
       password: password,
+      createdAt: new Date(),
     });
 
     //create token

@@ -38,6 +38,7 @@ const createNote = async (req, res, next) => {
       bgColor,
       sharedWith,
       createdBy,
+      createdAt: new Date(),
     });
     res
       .status(201)

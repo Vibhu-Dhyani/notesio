@@ -9,20 +9,20 @@ import axios from "axios";
 const MyNotes = () => {
   const [data, setData] = useState();
   const id = "65c111a227795abfdc62a026";
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let dataReceived = await axios.get(
-          "http://localhost:5001/api/notes/" + id
-        );
+  const fetchData = async () => {
+    try {
+      let dataReceived = await axios.get(
+        "http://localhost:5001/api/notes/" + id
+      );
 
-        setData(dataReceived.data.allNotes);
-        //console.log(dataReceived.data.allNotes);
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+      setData(dataReceived.data.allNotes);
+      //console.log(dataReceived.data.allNotes);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -41,7 +41,7 @@ const MyNotes = () => {
           <img src={Pluspng} alt="" />
         </div>
         <Modal open={open} onClose={handleClose}>
-          <NewNote data={data} setData={setData} />
+          <NewNote fetchData={fetchData} handleClose={handleClose} />
         </Modal>
         {data ? (
           data.map((note, index) => {
@@ -53,6 +53,8 @@ const MyNotes = () => {
                 tags={note.tags}
                 color={note.bgColor}
                 createdBy={note.createdBy}
+                _id={note._id}
+                fetchData={fetchData}
               />
             );
           })
